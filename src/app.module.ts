@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { PostsModule } from './posts/posts.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { typeOrmConfig } from '../ormconfig';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGO_URI ?? 'mongodb://localhost:27017'),
-    PostsModule,
+    TypeOrmModule.forRoot(typeOrmConfig),
+    UsersModule,
   ],
 })
 export class AppModule {}
